@@ -13,8 +13,8 @@ public abstract class AccountTransferManager {
 
                 //считаем что ИД записей не меняются и уникальны
                 var result = acc1.getId().compareTo(acc2.getId());
-                var min = result == -1 ? acc1 : acc2;
-                var max = result != -1 ? acc2 : acc1;
+                var min = result < 0 ? acc1 : acc2;
+                var max = result < 0 ? acc2 : acc1;
 
                 //лочим всегда в одном и том же порядке
                 synchronized (min) {
